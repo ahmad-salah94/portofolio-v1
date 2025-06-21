@@ -8,7 +8,6 @@ const PRIMARY_GRADIENT = "bg-gradient-to-r from-purple-600 to-blue-600";
 const SECONDARY_BG = "bg-gray-800 hover:bg-gray-700";
 const TEXT_PRIMARY = "text-white";
 const TEXT_SECONDARY = "text-gray-300";
-const TEXT_TERTIARY = "text-gray-400";
 
 export default function Hero() {
   const textRef = useRef(null);
@@ -17,11 +16,7 @@ export default function Hero() {
     const textElement = textRef.current;
     if (!textElement) return;
 
-    const roles = [
-      "Frontend Developer",
-      "Next.js Specialist",
-      "Tailwind CSS Expert",
-    ];
+    const roles = ["MLOps Engineer", "DevOps Engineer", "Software Engineer"];
     let roleIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
@@ -53,48 +48,54 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col items-center justify-center text-center overflow-hidden bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950"
+      className="relative min-h-screen flex items-center justify-center bg-gray-900 text-white overflow-hidden"
     >
-      <div className="container px-4 md:px-6 z-10">
-        <span className={`px-4 py-1 mb-4 rounded-full text-sm font-medium ${SECONDARY_BG} ${TEXT_SECONDARY}`}>
-          Welcome to my portfolio
-        </span>
-
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
-          Hi, I'm <span className="bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
-            Essam Mohamed
-          </span>
-        </h1>
-
-        <div className={`text-xl md:text-2xl ${TEXT_SECONDARY} mb-8 h-8`}>
-          I'm a <span ref={textRef} className={`${TEXT_PRIMARY} font-medium`}></span>
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-black opacity-50"></div>
+        {/* You can add a background video or image here */}
+      </div>
+      <div className="relative z-10 text-center px-4">
+        <div className="flex justify-center mb-6">
+          <img
+            src="/Profile picture.png"
+            alt="Ahmad Salah"
+            className="w-40 h-40 rounded-full border-4 border-purple-500 shadow-lg"
+          />
         </div>
-
-        <p className={`max-w-2xl ${TEXT_TERTIARY} mb-10 mx-auto`}>
-          I create engaging, responsive, and user-friendly web experiences
-          with modern technologies and clean code.
+        <h1 className="text-4xl md:text-6xl font-bold mb-4">Ahmad Salah</h1>
+        <h2 className="text-2xl md:text-4xl mb-6">
+          I'm a{" "}
+          <span
+            ref={textRef}
+            className="text-purple-400"
+          ></span>
+        </h2>
+        <p className={`max-w-2xl mx-auto mb-8 ${TEXT_SECONDARY}`}>
+          From Damascus to Germany, my journey has been one of resilience and
+          growth. Now an MLOps Engineer, I specialize in building scalable and
+          automated machine learning systems.
         </p>
-
-        <div className="flex justify-center items-center flex-col sm:flex-row gap-4">
-          <Link
-            href="#projects"
-            className={`px-6 py-3 rounded-lg ${PRIMARY_GRADIENT} ${TEXT_PRIMARY} font-medium shadow-lg shadow-purple-500/20 hover:shadow-purple-500/30 transition-all hover:scale-105`}
-          >
-            View My Work
+        <div className="flex justify-center gap-4">
+          <Link href="#contact" passHref>
+            <button
+              className={`${PRIMARY_GRADIENT} ${TEXT_PRIMARY} font-bold py-3 px-6 rounded-full transition-transform transform hover:scale-105`}
+            >
+              Get in Touch
+            </button>
           </Link>
-          <Link
-            href="#contact"
-            className={`px-6 py-3 rounded-lg ${SECONDARY_BG} ${TEXT_PRIMARY} font-medium transition-all hover:scale-105`}
-          >
-            Contact Me
+          <Link href="#projects" passHref>
+            <button
+              className={`${SECONDARY_BG} ${TEXT_PRIMARY} font-bold py-3 px-6 rounded-full transition-transform transform hover:scale-105`}
+            >
+              View My Work
+            </button>
           </Link>
         </div>
       </div>
-
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <a href="#about" className={`${TEXT_TERTIARY} hover:${TEXT_PRIMARY} transition-colors`}>
-          <ArrowDown size={24} />
-        </a>
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
+        <Link href="#about" passHref>
+          <ArrowDown className="w-8 h-8 animate-bounce" />
+        </Link>
       </div>
     </section>
   );
